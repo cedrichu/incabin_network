@@ -1,0 +1,514 @@
+25c25
+< # @(#) $Header: /cvsroot/nsnam/ns-2/tcl/lib/ns-default.tcl,v 1.380 2008/02/18 03:39:02 tom_henderson Exp $
+---
+> # @(#) $Header: /cvsroot/nsnam/ns-2/tcl/lib/ns-default.tcl,v 1.388 2010/07/03 22:45:45 tom_henderson Exp $
+102,103d101
+< # Qiu Qinlong: start of configure DropTail
+< # DropTail is used in aGW <-> server
+107,110c105
+< Queue/DropTail set mean_pktsize_ 512
+< #buffer size is not important due to the high bandwidth aGW <-> server
+< Queue/DropTail set limit_ 5000
+< # Qiu Qinlong: end of configure DropTail
+---
+> Queue/DropTail set mean_pktsize_ 500
+114d108
+< 
+143c137
+< Queue/RED set q_weight_ 0.002
+---
+> Queue/RED set q_weight_ -1
+178,438d171
+< # Qiu Qinlong: start of configure Queue/LTEQueue
+< Queue/LTEQueue set drop_front_ 0
+< Queue/LTEQueue set summarystats_ 0
+< Queue/LTEQueue set queue_in_bytes_ 0
+< Queue/LTEQueue set mean_pktsize_ 512
+< Queue/LTEQueue set debug_ false 
+< Queue/LTEQueue set qos_ false 
+< Queue/LTEQueue set flow_control_ false 
+< Queue/LTEQueue set snode_ -1
+< Queue/LTEQueue set dnode_ -1
+< # end of configure Queue/LTEQueue
+< 
+< # Qiu Qinlong: start of configure ULAirQueue
+< # ULAirQueue is used in UE -> eNB
+< Queue/LTEQueue/ULAirQueue set drop_front_ false
+< Queue/LTEQueue/ULAirQueue set summarystats_ false
+< Queue/LTEQueue/ULAirQueue set queue_in_bytes_ false
+< Queue/LTEQueue/ULAirQueue set mean_pktsize_ 52
+< Queue/LTEQueue/ULAirQueue set limit_ 500
+< 
+< Queue/LTEQueue/ULAirQueue set bytes_ true ;		# default changed on 10/11/2004.
+< Queue/LTEQueue/ULAirQueue set queue_in_bytes_ true ;	# default changed on 10/11/2004.
+< # Queue/LTEQueue/ULAirQueue set thresh_ 5
+< Queue/LTEQueue/ULAirQueue set thresh_ 0
+< # Queue/LTEQueue/ULAirQueue/thresh_ was changed on 12/29/01, for automatic configuration.
+< # Queue/LTEQueue/ULAirQueue set maxthresh_ 15
+< Queue/LTEQueue/ULAirQueue set maxthresh_ 0
+< # Queue/LTEQueue/ULAirQueue/maxthresh_ was changed on 12/29/01, for automatic configuration.
+< Queue/LTEQueue/ULAirQueue set thresh_queue_ [Queue set limit_]
+< # Note from Sally: I don't see that thresh_queue_ is used for anything.
+< Queue/LTEQueue/ULAirQueue set maxthresh_queue_ [Queue set limit_]
+< # Note from Sally: I don't see that maxthresh_queue_ is used for anything.
+< Queue/LTEQueue/ULAirQueue set mean_pktsize_ 500
+< Queue/LTEQueue/ULAirQueue set idle_pktsize_ 100
+< # Queue/LTEQueue/ULAirQueue set q_weight_ 0.002
+< Queue/LTEQueue/ULAirQueue set q_weight_ 0.002
+< # Queue/LTEQueue/ULAirQueue/q_weight_ was changed on 12/29/01, for automatic configuration.
+< Queue/LTEQueue/ULAirQueue set wait_ true
+< Queue/LTEQueue/ULAirQueue set linterm_ 10
+< Queue/LTEQueue/ULAirQueue set mark_p_ 0.1
+< Queue/LTEQueue/ULAirQueue set use_mark_p_ true
+< # Queue/LTEQueue/ULAirQueue/use_mark_p_ was added on 11/23/05.
+< # Queue/LTEQueue/ULAirQueue/use_mark_p_ was changed to true on 12/22/05.
+< Queue/LTEQueue/ULAirQueue set setbit_ false
+< Queue/LTEQueue/ULAirQueue set gentle_ true
+< ### Queue/LTEQueue/ULAirQueue/gentle_ was changed from false to true on Apr 23, 2001.
+< Queue/LTEQueue/ULAirQueue set drop_tail_ true
+< Queue/LTEQueue/ULAirQueue set drop_front_ false
+< Queue/LTEQueue/ULAirQueue set drop_rand_ false
+< Queue/LTEQueue/ULAirQueue set doubleq_ false
+< Queue/LTEQueue/ULAirQueue set ns1_compat_ false
+< Queue/LTEQueue/ULAirQueue set dqthresh_ 50
+< Queue/LTEQueue/ULAirQueue set ave_ 0.0
+< Queue/LTEQueue/ULAirQueue set prob1_ 0.0
+< Queue/LTEQueue/ULAirQueue set curq_ 0
+< Queue/LTEQueue/ULAirQueue set cur_max_p_ 0
+< Queue/LTEQueue/ULAirQueue set summarystats_ false
+< ### Adaptive RED.
+< Queue/LTEQueue/ULAirQueue set alpha_ 0.01
+< Queue/LTEQueue/ULAirQueue set beta_ 0.9 
+< Queue/LTEQueue/ULAirQueue set adaptive_ 0
+< Queue/LTEQueue/ULAirQueue set interval_ 0.5
+< Queue/LTEQueue/ULAirQueue set targetdelay_ 0.005
+< Queue/LTEQueue/ULAirQueue set top_ 0.5
+< Queue/LTEQueue/ULAirQueue set bottom_ 0
+< ### Queue/LTEQueue/ULAirQueue/bottom_ was changed from 0.01 to 0 on June 23, 2004,
+< ###   for automatic configuration.
+< Queue/LTEQueue/ULAirQueue set cautious_ 0
+< Queue/LTEQueue/ULAirQueue set feng_adaptive_ 0
+< # Qiu Qinlong: end of configure ULAirQueue
+< 
+< 
+< # Qiu Qinlong: start of configure DLAirQueue
+< # ULAirQueue is used in eNB -> UE
+< 
+< Queue/LTEQueue/DLAirQueue set drop_front_ false
+< Queue/LTEQueue/DLAirQueue set summarystats_ false
+< Queue/LTEQueue/DLAirQueue set queue_in_bytes_ false
+< Queue/LTEQueue/DLAirQueue set mean_pktsize_ 52
+< Queue/LTEQueue/DLAirQueue set limit_ 500
+< 
+< Queue/LTEQueue/DLAirQueue set bytes_ true ;		# default changed on 10/11/2004.
+< Queue/LTEQueue/DLAirQueue set queue_in_bytes_ true ;	# default changed on 10/11/2004.
+< # Queue/LTEQueue/DLAirQueue set thresh_ 5
+< Queue/LTEQueue/DLAirQueue set thresh_ 0
+< # Queue/LTEQueue/DLAirQueue/thresh_ was changed on 12/29/01, for automatic configuration.
+< # Queue/LTEQueue/DLAirQueue set maxthresh_ 15
+< Queue/LTEQueue/DLAirQueue set maxthresh_ 0
+< # Queue/LTEQueue/DLAirQueue/maxthresh_ was changed on 12/29/01, for automatic configuration.
+< Queue/LTEQueue/DLAirQueue set thresh_queue_ [Queue set limit_]
+< # Note from Sally: I don't see that thresh_queue_ is used for anything.
+< Queue/LTEQueue/DLAirQueue set maxthresh_queue_ [Queue set limit_]
+< # Note from Sally: I don't see that maxthresh_queue_ is used for anything.
+< Queue/LTEQueue/DLAirQueue set mean_pktsize_ 500
+< Queue/LTEQueue/DLAirQueue set idle_pktsize_ 100
+< # Queue/LTEQueue/DLAirQueue set q_weight_ 0.002
+< Queue/LTEQueue/DLAirQueue set q_weight_ 0.002
+< # Queue/LTEQueue/DLAirQueue/q_weight_ was changed on 12/29/01, for automatic configuration.
+< Queue/LTEQueue/DLAirQueue set wait_ true
+< Queue/LTEQueue/DLAirQueue set linterm_ 10
+< Queue/LTEQueue/DLAirQueue set mark_p_ 0.1
+< Queue/LTEQueue/DLAirQueue set use_mark_p_ true
+< # Queue/LTEQueue/DLAirQueue/use_mark_p_ was added on 11/23/05.
+< # Queue/LTEQueue/DLAirQueue/use_mark_p_ was changed to true on 12/22/05.
+< Queue/LTEQueue/DLAirQueue set setbit_ false
+< Queue/LTEQueue/DLAirQueue set gentle_ true
+< ### Queue/LTEQueue/DLAirQueue/gentle_ was changed from false to true on Apr 23, 2001.
+< Queue/LTEQueue/DLAirQueue set drop_tail_ true
+< Queue/LTEQueue/DLAirQueue set drop_front_ false
+< Queue/LTEQueue/DLAirQueue set drop_rand_ false
+< Queue/LTEQueue/DLAirQueue set doubleq_ false
+< Queue/LTEQueue/DLAirQueue set ns1_compat_ false
+< Queue/LTEQueue/DLAirQueue set dqthresh_ 50
+< Queue/LTEQueue/DLAirQueue set ave_ 0.0
+< Queue/LTEQueue/DLAirQueue set prob1_ 0.0
+< Queue/LTEQueue/DLAirQueue set curq_ 0
+< Queue/LTEQueue/DLAirQueue set cur_max_p_ 0
+< Queue/LTEQueue/DLAirQueue set summarystats_ false
+< ### Adaptive RED.
+< Queue/LTEQueue/DLAirQueue set alpha_ 0.01
+< Queue/LTEQueue/DLAirQueue set beta_ 0.9 
+< Queue/LTEQueue/DLAirQueue set adaptive_ 0
+< Queue/LTEQueue/DLAirQueue set interval_ 0.5
+< Queue/LTEQueue/DLAirQueue set targetdelay_ 0.005
+< Queue/LTEQueue/DLAirQueue set top_ 0.5
+< Queue/LTEQueue/DLAirQueue set bottom_ 0
+< ### Queue/LTEQueue/DLAirQueue/bottom_ was changed from 0.01 to 0 on June 23, 2004,
+< ###   for automatic configuration.
+< Queue/LTEQueue/DLAirQueue set cautious_ 0
+< Queue/LTEQueue/DLAirQueue set feng_adaptive_ 0
+< # configure the features
+< # Queue/LTEQueue/DLAirQueue set qos_ true
+< # Queue/LTEQueue/DLAirQueue set flow_control_ false
+< # Qiu Qinlong: end of configure DLAirQueue
+< 
+< 
+< # Qiu Qinlong: start of configure ULS1Queue
+< # ULAirQueue is used in eNB -> aGW
+< 
+< Queue/LTEQueue/ULS1Queue set drop_front_ false
+< Queue/LTEQueue/ULS1Queue set summarystats_ false
+< Queue/LTEQueue/ULS1Queue set queue_in_bytes_ false
+< Queue/LTEQueue/ULS1Queue set mean_pktsize_ 512
+< Queue/LTEQueue/ULS1Queue set limit_ 5000
+< 
+< Queue/LTEQueue/ULS1Queue set bytes_ true ;		# default changed on 10/11/2004.
+< Queue/LTEQueue/ULS1Queue set queue_in_bytes_ true ;	# default changed on 10/11/2004.
+< # Queue/LTEQueue/ULS1Queue set thresh_ 5
+< Queue/LTEQueue/ULS1Queue set thresh_ 0
+< # Queue/LTEQueue/ULS1Queue/thresh_ was changed on 12/29/01, for automatic configuration.
+< # Queue/LTEQueue/ULS1Queue set maxthresh_ 15
+< Queue/LTEQueue/ULS1Queue set maxthresh_ 0
+< # Queue/LTEQueue/ULS1Queue/maxthresh_ was changed on 12/29/01, for automatic configuration.
+< Queue/LTEQueue/ULS1Queue set thresh_queue_ [Queue set limit_]
+< # Note from Sally: I don't see that thresh_queue_ is used for anything.
+< Queue/LTEQueue/ULS1Queue set maxthresh_queue_ [Queue set limit_]
+< # Note from Sally: I don't see that maxthresh_queue_ is used for anything.
+< Queue/LTEQueue/ULS1Queue set mean_pktsize_ 500
+< Queue/LTEQueue/ULS1Queue set idle_pktsize_ 100
+< # Queue/LTEQueue/ULS1Queue set q_weight_ 0.002
+< Queue/LTEQueue/ULS1Queue set q_weight_ 0.002
+< # Queue/LTEQueue/ULS1Queue/q_weight_ was changed on 12/29/01, for automatic configuration.
+< Queue/LTEQueue/ULS1Queue set wait_ true
+< Queue/LTEQueue/ULS1Queue set linterm_ 10
+< Queue/LTEQueue/ULS1Queue set mark_p_ 0.1
+< Queue/LTEQueue/ULS1Queue set use_mark_p_ true
+< # Queue/LTEQueue/ULS1Queue/use_mark_p_ was added on 11/23/05.
+< # Queue/LTEQueue/ULS1Queue/use_mark_p_ was changed to true on 12/22/05.
+< Queue/LTEQueue/ULS1Queue set setbit_ false
+< Queue/LTEQueue/ULS1Queue set gentle_ true
+< ### Queue/LTEQueue/ULS1Queue/gentle_ was changed from false to true on Apr 23, 2001.
+< Queue/LTEQueue/ULS1Queue set drop_tail_ true
+< Queue/LTEQueue/ULS1Queue set drop_front_ false
+< Queue/LTEQueue/ULS1Queue set drop_rand_ false
+< Queue/LTEQueue/ULS1Queue set doubleq_ false
+< Queue/LTEQueue/ULS1Queue set ns1_compat_ false
+< Queue/LTEQueue/ULS1Queue set dqthresh_ 50
+< Queue/LTEQueue/ULS1Queue set ave_ 0.0
+< Queue/LTEQueue/ULS1Queue set prob1_ 0.0
+< Queue/LTEQueue/ULS1Queue set curq_ 0
+< Queue/LTEQueue/ULS1Queue set cur_max_p_ 0
+< Queue/LTEQueue/ULS1Queue set summarystats_ false
+< ### Adaptive RED.
+< Queue/LTEQueue/ULS1Queue set alpha_ 0.01
+< Queue/LTEQueue/ULS1Queue set beta_ 0.9 
+< Queue/LTEQueue/ULS1Queue set adaptive_ 0
+< Queue/LTEQueue/ULS1Queue set interval_ 0.5
+< Queue/LTEQueue/ULS1Queue set targetdelay_ 0.005
+< Queue/LTEQueue/ULS1Queue set top_ 0.5
+< Queue/LTEQueue/ULS1Queue set bottom_ 0
+< ### Queue/LTEQueue/ULS1Queue/bottom_ was changed from 0.01 to 0 on June 23, 2004,
+< ###   for automatic configuration.
+< Queue/LTEQueue/ULS1Queue set cautious_ 0
+< Queue/LTEQueue/ULS1Queue set feng_adaptive_ 0
+< #Qiu Qinlong: end of configure ULS1Queue
+< 
+< # Qiu Qinlong: start of configure LTEQueue/DLS1Queue
+< # ULAirQueue is used in aGW -> eNB
+< 
+< Queue/LTEQueue/DLS1Queue set drop_front_ false
+< Queue/LTEQueue/DLS1Queue set summarystats_ false
+< Queue/LTEQueue/DLS1Queue set queue_in_bytes_ false
+< Queue/LTEQueue/DLS1Queue set mean_pktsize_ 512
+< Queue/LTEQueue/DLS1Queue set limit_ 5000
+< 
+< Queue/LTEQueue/DLS1Queue set bytes_ true ;		# default changed on 10/11/2004.
+< Queue/LTEQueue/DLS1Queue set queue_in_bytes_ true ;	# default changed on 10/11/2004.
+< # Queue/LTEQueue/DLS1Queue set thresh_ 5
+< Queue/LTEQueue/DLS1Queue set thresh_ 0
+< # Queue/LTEQueue/DLS1Queue/thresh_ was changed on 12/29/01, for automatic configuration.
+< # Queue/LTEQueue/DLS1Queue set maxthresh_ 15
+< Queue/LTEQueue/DLS1Queue set maxthresh_ 0
+< # Queue/LTEQueue/DLS1Queue/maxthresh_ was changed on 12/29/01, for automatic configuration.
+< Queue/LTEQueue/DLS1Queue set thresh_queue_ [Queue set limit_]
+< # Note from Sally: I don't see that thresh_queue_ is used for anything.
+< Queue/LTEQueue/DLS1Queue set maxthresh_queue_ [Queue set limit_]
+< # Note from Sally: I don't see that maxthresh_queue_ is used for anything.
+< Queue/LTEQueue/DLS1Queue set mean_pktsize_ 500
+< Queue/LTEQueue/DLS1Queue set idle_pktsize_ 100
+< # Queue/LTEQueue/DLS1Queue set q_weight_ 0.002
+< Queue/LTEQueue/DLS1Queue set q_weight_ 0.002
+< # Queue/LTEQueue/DLS1Queue/q_weight_ was changed on 12/29/01, for automatic configuration.
+< Queue/LTEQueue/DLS1Queue set wait_ true
+< Queue/LTEQueue/DLS1Queue set linterm_ 10
+< Queue/LTEQueue/DLS1Queue set mark_p_ 0.1
+< Queue/LTEQueue/DLS1Queue set use_mark_p_ true
+< # Queue/LTEQueue/DLS1Queue/use_mark_p_ was added on 11/23/05.
+< # Queue/LTEQueue/DLS1Queue/use_mark_p_ was changed to true on 12/22/05.
+< Queue/LTEQueue/DLS1Queue set setbit_ false
+< Queue/LTEQueue/DLS1Queue set gentle_ true
+< ### Queue/LTEQueue/DLS1Queue/gentle_ was changed from false to true on Apr 23, 2001.
+< Queue/LTEQueue/DLS1Queue set drop_tail_ true
+< Queue/LTEQueue/DLS1Queue set drop_front_ false
+< Queue/LTEQueue/DLS1Queue set drop_rand_ false
+< Queue/LTEQueue/DLS1Queue set doubleq_ false
+< Queue/LTEQueue/DLS1Queue set ns1_compat_ false
+< Queue/LTEQueue/DLS1Queue set dqthresh_ 50
+< Queue/LTEQueue/DLS1Queue set ave_ 0.0
+< Queue/LTEQueue/DLS1Queue set prob1_ 0.0
+< Queue/LTEQueue/DLS1Queue set curq_ 0
+< Queue/LTEQueue/DLS1Queue set cur_max_p_ 0
+< Queue/LTEQueue/DLS1Queue set summarystats_ false
+< ### Adaptive RED.
+< Queue/LTEQueue/DLS1Queue set alpha_ 0.01
+< Queue/LTEQueue/DLS1Queue set beta_ 0.9 
+< Queue/LTEQueue/DLS1Queue set adaptive_ 0
+< Queue/LTEQueue/DLS1Queue set interval_ 0.5
+< Queue/LTEQueue/DLS1Queue set targetdelay_ 0.005
+< Queue/LTEQueue/DLS1Queue set top_ 0.5
+< Queue/LTEQueue/DLS1Queue set bottom_ 0
+< ### Queue/LTEQueue/DLS1Queue/bottom_ was changed from 0.01 to 0 on June 23, 2004,
+< ###   for automatic configuration.
+< Queue/LTEQueue/DLS1Queue set cautious_ 0
+< Queue/LTEQueue/DLS1Queue set feng_adaptive_ 0
+< # configure the features
+< # Queue/LTEQueue/DLS1Queue set qos_ true
+< # Queue/LTEQueue/DLS1Queue set flow_control_ false 
+< #Qiu Qinlong: end of configure LTEQueue/DLS1Queue
+< 
+< 
+< 
+757,763c490,493
+< # Qiu Qinlong: start of configure CBR traffic
+< # CBR traffic is usde to simulate the streaming traffic
+< Application/Traffic/CBR set rate_ 128Kb	;# send rate during on time (bps) 
+< Application/Traffic/CBR set packetSize_ 210 ;#rate=packetSize_*8/interval
+< Application/Traffic/CBR set random_ 1; # random noise in the interval, and packet size
+< Application/Traffic/CBR set maxpkts_ 1024; # maximum packet size
+< # Qiu Qinlong: end of configure CBR traffic
+---
+> Application/Traffic/CBR set rate_ 448Kb	;# corresponds to interval of 3.75ms
+> Application/Traffic/CBR set packetSize_ 210
+> Application/Traffic/CBR set random_ 0
+> Application/Traffic/CBR set maxpkts_ 268435456; # 0x10000000
+777a508,510
+> Application/Traffic/MPEG4 set rateFactor_ 1
+> Application/Traffic/MPEG4 set initialSeed_ 0.5
+> 
+843c576
+< AddrParams set ALL_BITS_SET 0xffffffff
+---
+> AddrParams set ALL_BITS_SET 0x7fffffff
+850,852c583,585
+< ####  Default and Maximum Address space - leaving the MSB as signed bit
+< AllocAddrBits set DEFADDRSIZE_ 32
+< AllocAddrBits set MAXADDRSIZE_ 32                ;# leaving the signed bit
+---
+> ####  Default and Maximum Address space - do not exceed 31 due to Tcl issues
+> AllocAddrBits set DEFADDRSIZE_ 31
+> AllocAddrBits set MAXADDRSIZE_ 31                
+875d607
+<  
+880,881c612,613
+< Simulator set McastBaseAddr_ 0x80000000
+< Simulator set McastAddr_ 0x80000000
+---
+> Simulator set McastBaseAddr_ 0x40000000
+> Simulator set McastAddr_ 0x40000000
+980c712
+< Mac/802_11Ext set BasicModulationScheme_ 0 ;# BPSK and coding rate 1/2 is the basic modulation scheme for header and ctrl packets
+---
+> Mac/802_11Ext set BasicModulationScheme_ 0    ;# BPSK and coding rate 1/2 is the basic modulation scheme for header and ctrl packets
+993,994c725,727
+< 
+< 
+---
+> Mac/802_11Ext set Rate_Mode_ 0
+> Mac/802_11Ext set Noise_floor_ 2.512e-13
+> Mac/802_11Ext set Fixed_rate 0
+1036,1038c769,771
+< Phy/WirelessPhyExt set CSThresh_ 6.30957e-12             ;#-82 dBm
+< Phy/WirelessPhyExt set noise_floor_ 7.96159e-14           ;#-101 dBm
+< Phy/WirelessPhyExt set PowerMonitorThresh_ 2.653e-14     ;#-105.7 dBm (noise_floor_ / 3)
+---
+> Phy/WirelessPhyExt set CSThresh_ 6.30957e-12           ;# -82 dBm
+> Phy/WirelessPhyExt set noise_floor_ 7.96159e-14        ;# -101 dBm
+> Phy/WirelessPhyExt set PowerMonitorThresh_ 2.653e-14   ;# -105.7 dBm (noise_floor_ / 3)
+1040,1041c773,774
+< Phy/WirelessPhyExt set freq_ 5.18e+9                    ;#5.18 GHz
+< Phy/WirelessPhyExt set HeaderDuration_   0.000020       ;#20 us
+---
+> Phy/WirelessPhyExt set freq_ 5.18e+9                   ;# 5.18 GHz
+> Phy/WirelessPhyExt set HeaderDuration_   0.000020      ;# 20 us
+1043c776
+< Phy/WirelessPhyExt set L_ 1.0                          ;#default
+---
+> Phy/WirelessPhyExt set L_ 1.0                          ;# default
+1046,1048c779,781
+< Phy/WirelessPhyExt set SINR_PreambleCapture_ 2.5118;   ;# 4 dB
+< Phy/WirelessPhyExt set SINR_DataCapture_ 100.0;        ;# 10 dB
+< Phy/WirelessPhyExt set trace_dist_  1e6                ;# trace until distance of 1 Mio. km ("infinty")
+---
+> Phy/WirelessPhyExt set SINR_PreambleCapture_ 3.1623;   ;# 5 dB
+> Phy/WirelessPhyExt set SINR_DataCapture_ 10.0;         ;# 10 dB
+> Phy/WirelessPhyExt set trace_dist_ 1e6                 ;# trace until distance of 1 Mio. km ("infinty")
+1076a810,818
+> #Lek
+> Propagation/TwoRayClean set dist0_ 1.0
+> Propagation/TwoRayClean set std_db_ 3.7392
+> Propagation/TwoRayClean set seed_ 0
+> #Lek
+> Propagation/FreeSpaceClean set dist0_ 1.0
+> Propagation/FreeSpaceClean set std_db_ 3.7392
+> Propagation/FreeSpaceClean set seed_ 0
+> 
+1121c863
+< Agent/SCTP set fastRtxTrigger_ 4        ;# 4 missing reports trigger fast rtx
+---
+> Agent/SCTP set fastRtxTrigger_ 3        ;# 3 missing reports trigger fast rtx
+1132a875,878
+> 
+> ## PN: 5/2007. NR-Sacks & send window simulation 
+> Agent/SCTP set initialSwnd_ 0          ;# initial send window; 0=No Send window
+> Agent/SCTP set useNonRenegSacks_ 0     ;# turn off non-renegable sack option
+1162c908
+< Agent/SCTP/CMT set useCmtPF_ 0          ;# CMT-PF turned off
+---
+> Agent/SCTP/CMT set useCmtPF_ 1          ;# CMT-PF turned on
+1294c1040,1041
+< Agent/TCP set SetCWRonRetransmit_ false ; # added on 2005/06/19.
+---
+> Agent/TCP set SetCWRonRetransmit_ true ; # added on 2005/06/19.
+> 				 	 # default changed on 2008/06/05. 
+1327a1075
+> Agent/TCPSink set SYN_immediate_ack_ true ; # Added 2010/02/02
+1500c1248
+<         Agent/TCP/FullTcp set ecn_syn_wait_ false; # Wait after marked SYN/ACK? 
+---
+>         Agent/TCP/FullTcp set ecn_syn_wait_ 0; # Wait after marked SYN/ACK? 
+1723a1472,1591
+> # DCCP
+> # A description of each parameter can be found in the agents' header files
+> # i.e.  dccp/dccp.h  dccp/dccp_tcplike.h  dccp/dccp_tfrc.h
+> 
+> Agent/DCCP set packetSize_ 500
+> 
+> Agent/DCCP set initial_rtx_to_ 3.0
+> Agent/DCCP set max_rtx_to_ 75.0
+> Agent/DCCP set resp_to_ 75.0
+> 
+> Agent/DCCP set sb_size_ 1000
+> Agent/DCCP set opt_size_ 512
+> Agent/DCCP set feat_size_ 24
+> Agent/DCCP set ackv_size_ 20
+> 
+> Agent/DCCP set ccid_ 0
+> Agent/DCCP set use_ecn_local_ 0
+> Agent/DCCP set use_ecn_remote_ 0
+> Agent/DCCP set ack_ratio_local_ 2
+> Agent/DCCP set ack_ratio_remote_ 2
+> Agent/DCCP set use_ackv_local_ 0
+> Agent/DCCP set use_ackv_remote_ 0
+> Agent/DCCP set q_scheme_ 0
+> Agent/DCCP set q_local_ 0
+> Agent/DCCP set q_remote_ 0
+> 
+> Agent/DCCP set snd_delay_ 0.0001
+> 
+> Agent/DCCP set nam_tracevar_ false
+> Agent/DCCP set trace_all_oneline_ false
+> 
+> Agent/DCCP set allow_mult_neg_ 0
+> Agent/DCCP set ndp_limit_ 8
+> Agent/DCCP set ccval_limit_ 16
+> 
+> Agent/DCCP set cscov_ 0
+> 
+> Agent/DCCP set num_data_pkt_ 0
+> Agent/DCCP set num_ack_pkt_ 0
+> Agent/DCCP set num_dataack_pkt_ 0
+> 
+> Agent/DCCP/TCPlike set ccid_ 2
+> Agent/DCCP/TCPlike set use_ecn_local_ 1
+> Agent/DCCP/TCPlike set use_ecn_remote_ 1
+> Agent/DCCP/TCPlike set use_ackv_local_ 1
+> Agent/DCCP/TCPlike set use_ackv_remote_ 1
+> 
+> Agent/DCCP/TCPlike set initial_cwnd_ 3
+> Agent/DCCP/TCPlike set cwnd_timeout_ 1
+> Agent/DCCP/TCPlike set initial_ssthresh_ 65535
+> Agent/DCCP/TCPlike set cwnd_ 2
+> Agent/DCCP/TCPlike set cwnd_frac_ 0
+> Agent/DCCP/TCPlike set ssthresh_ 20
+> Agent/DCCP/TCPlike set pipe_ 0
+> 
+> Agent/DCCP/TCPlike set initial_rto_ 3.0
+> Agent/DCCP/TCPlike set min_rto_ 1.0
+> Agent/DCCP/TCPlike set rto_ 3.0
+> Agent/DCCP/TCPlike set srtt_ -1.0
+> Agent/DCCP/TCPlike set rttvar_ 0.0
+> Agent/DCCP/TCPlike set rtt_sample_ 0.0
+> Agent/DCCP/TCPlike set alpha_ 0.125
+> Agent/DCCP/TCPlike set beta_ 0.25
+> Agent/DCCP/TCPlike set k_ 4
+> Agent/DCCP/TCPlike set g_ 0.01
+> Agent/DCCP/TCPlike set num_dup_acks_ 3
+> 
+> Agent/DCCP/TCPlike set q_min_t_ 0.2
+> Agent/DCCP/TCPlike set q_opt_ratio_ 1
+> Agent/DCCP/TCPlike set dack_delay_ 0.2
+> 
+> Agent/DCCP/TCPlike set ackv_size_lim_ 10
+> 
+> Agent/DCCP/TFRC set ccid_ 3
+> Agent/DCCP/TFRC set use_ecn_local_ 1
+> Agent/DCCP/TFRC set use_ecn_remote_ 1
+> Agent/DCCP/TFRC set use_ackv_local_ 1
+> Agent/DCCP/TFRC set use_ackv_remote_ 1
+> Agent/DCCP/TFRC set use_loss_rate_local_ 1
+> Agent/DCCP/TFRC set use_loss_rate_remote_ 1
+> Agent/DCCP/TFRC set rtt_scheme_local_ 0
+> Agent/DCCP/TFRC set rtt_scheme_remote_ 0
+> 
+> Agent/DCCP/TFRC set num_dup_acks_ 3
+> Agent/DCCP/TFRC set p_tol_ 0.05
+> Agent/DCCP/TFRC set win_count_per_rtt_ 4
+> Agent/DCCP/TFRC set max_wc_inc_ 5
+> 
+> Agent/DCCP/TFRC set s_use_osc_prev_ 1
+> 
+> Agent/DCCP/TFRC set s_x_ 500.0
+> Agent/DCCP/TFRC set s_x_inst_ 500.0
+> Agent/DCCP/TFRC set s_x_recv_ 0.0
+> Agent/DCCP/TFRC set s_r_sample_ 0.0
+> Agent/DCCP/TFRC set s_rtt_ 0.0
+> Agent/DCCP/TFRC set s_r_sqmean_ 0.0
+> 
+> Agent/DCCP/TFRC set s_smallest_p_ 0.00001
+> Agent/DCCP/TFRC set s_rtt_q_ 0.9
+> Agent/DCCP/TFRC set s_rtt_q2_ 0.9
+> Agent/DCCP/TFRC set s_t_mbi_ 64.0
+> Agent/DCCP/TFRC set s_os_time_gran_ 0.01
+> 
+> Agent/DCCP/TFRC set s_s_ 500
+> Agent/DCCP/TFRC set s_initial_x_ 500.0
+> Agent/DCCP/TFRC set s_initial_rto_ 2.0
+> Agent/DCCP/TFRC set s_x_ 500.0
+> Agent/DCCP/TFRC set s_x_inst_ 500.0
+> Agent/DCCP/TFRC set s_x_recv_ 0.0
+> Agent/DCCP/TFRC set s_r_sample_ 0.0
+> Agent/DCCP/TFRC set s_rtt_ 0.0
+> Agent/DCCP/TFRC set s_r_sqmean_ 0.0
+> Agent/DCCP/TFRC set s_p_ 0.0
+> Agent/DCCP/TFRC set s_q_opt_ratio_ 1
+> 
+> Agent/DCCP/TFRC set r_s_ 500
+> Agent/DCCP/TFRC set r_rtt_ 0.0
+> Agent/DCCP/TFRC set r_p_ 0.0
+> Agent/DCCP/TFRC set q_min_t_ 0.2
+> 
+1735a1604,1605
+> Agent/MDART set macFailed_ true
+> Agent/MDART set etxMetric_ true

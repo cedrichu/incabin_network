@@ -1,0 +1,183 @@
+INITIALIZE THE LIST xListHead
+Starting Simulation...
+SORTING LISTS ...DONE!
+Created ServerDelay RNG and RV
+Created Persistent RspSz RNG and RV
+Created Persistent RNG and RV
+Created Number of Pages RNG and RV
+Created Single Objects RNG and RV
+Created Objects Per Page RNG and RV
+Created Time Btwn Pages RNG and RV
+Created Time Btwn Objs RNG and RV
+
+PackMimeHTTP _o187> new flow 0  total active: 1 at 10.000000
+	flow 0 created new TCPAgent _o195
+	flow 0 created new TCPAgent _o196
+	flow 0 created new ClientApp _o200 (0 in pool, 1 active)
+	flow 0 created new ServerApp _o201 (0 in pool, 1 active)
+	next connection scheduled in 0.283980 s...
+client _o200 (0)> sent 914-byte req (1103-byte rsp) at 10.000000
+
+PackMimeHTTP _o187> new flow 1  total active: 2 at 10.283980
+	flow 1 created new TCPAgent _o202
+	flow 1 created new TCPAgent _o203
+	flow 1 created new ClientApp _o206 (0 in pool, 2 active)
+	flow 1 created new ServerApp _o207 (0 in pool, 2 active)
+	next connection scheduled in 0.031536 s...
+client _o206 (1)> sent 885-byte req (1144-byte rsp) at 10.283980
+
+PackMimeHTTP _o187> new flow 2  total active: 3 at 10.315516
+	flow 2 created new TCPAgent _o208
+	flow 2 created new TCPAgent _o209
+	flow 2 created new ClientApp _o212 (0 in pool, 3 active)
+	flow 2 created new ServerApp _o213 (0 in pool, 3 active)
+	next connection scheduled in 0.024678 s...
+client _o212 (2)> sent 1226-byte req (317-byte rsp) at 10.315516
+
+PackMimeHTTP _o187> new flow 3  total active: 4 at 10.340193
+	flow 3 created new TCPAgent _o214
+	flow 3 created new TCPAgent _o215
+	flow 3 created new ClientApp _o218 (0 in pool, 4 active)
+	flow 3 created new ServerApp _o219 (0 in pool, 4 active)
+	next connection scheduled in 1.266051 s...
+client _o218 (3)> sent 374-byte req (1384-byte rsp) at 10.340193
+
+PackMimeHTTP _o187> new flow 4  total active: 5 at 11.606244
+	flow 4 created new TCPAgent _o220
+	flow 4 created new TCPAgent _o221
+	flow 4 created new ClientApp _o224 (0 in pool, 5 active)
+	flow 4 created new ServerApp _o225 (0 in pool, 5 active)
+	next connection scheduled in 0.044839 s...
+client _o224 (4)> sent 356-byte req (39264-byte rsp) at 11.606244
+
+PackMimeHTTP _o187> new flow 5  total active: 6 at 11.651083
+	flow 5 created new TCPAgent _o226
+	flow 5 created new TCPAgent _o227
+	flow 5 created new ClientApp _o230 (0 in pool, 6 active)
+	flow 5 created new ServerApp _o231 (0 in pool, 6 active)
+	next connection scheduled in 0.079546 s...
+client _o230 (5)> sent 544-byte req (907-byte rsp) at 11.651083
+
+PackMimeHTTP _o187> new flow 6  total active: 7 at 11.730630
+	flow 6 created new TCPAgent _o232
+	flow 6 created new TCPAgent _o233
+	flow 6 created new ClientApp _o236 (0 in pool, 7 active)
+	flow 6 created new ServerApp _o237 (0 in pool, 7 active)
+	next connection scheduled in 0.116915 s...
+client _o236 (6)> sent 350-byte req (150-byte rsp) at 11.730630
+
+PackMimeHTTP _o187> new flow 7  total active: 8 at 11.847545
+	flow 7 created new TCPAgent _o238
+	flow 7 created new TCPAgent _o239
+	flow 7 created new ClientApp _o242 (0 in pool, 8 active)
+	flow 7 created new ServerApp _o243 (0 in pool, 8 active)
+	next connection scheduled in 0.004127 s...
+client _o242 (7)> sent 447-byte req (299-byte rsp) at 11.847545
+
+PackMimeHTTP _o187> new flow 8  total active: 9 at 11.851672
+	flow 8 created new TCPAgent _o244
+	flow 8 created new TCPAgent _o245
+	flow 8 created new ClientApp _o248 (0 in pool, 9 active)
+	flow 8 created new ServerApp _o249 (0 in pool, 9 active)
+	next connection scheduled in 0.001073 s...
+client _o248 (8)> sent 468-byte req (20416-byte rsp) at 11.851672
+
+PackMimeHTTP _o187> new flow 9  total active: 10 at 11.852745
+	flow 9 created new TCPAgent _o250
+	flow 9 created new TCPAgent _o251
+	flow 9 created new ClientApp _o254 (0 in pool, 10 active)
+	flow 9 created new ServerApp _o255 (0 in pool, 10 active)
+	next connection scheduled in 1.501510 s...
+client _o254 (9)> sent 352-byte req (55858-byte rsp) at 11.852745
+
+PackMimeHTTP _o187> new flow 10  total active: 11 at 13.354255
+	flow 10 created new TCPAgent _o256
+	flow 10 created new TCPAgent _o257
+	flow 10 created new ClientApp _o260 (0 in pool, 11 active)
+	flow 10 created new ServerApp _o261 (0 in pool, 11 active)
+	next connection scheduled in 0.320980 s...
+client _o260 (10)> sent 482-byte req (9462-byte rsp) at 13.354255
+
+PackMimeHTTP _o187> new flow 11  total active: 12 at 13.675234
+	flow 11 created new TCPAgent _o262
+	flow 11 created new TCPAgent _o263
+	flow 11 created new ClientApp _o266 (0 in pool, 12 active)
+	flow 11 created new ServerApp _o267 (0 in pool, 12 active)
+	next connection scheduled in 0.174769 s...
+client _o266 (11)> sent 391-byte req (5401-byte rsp) at 13.675234
+
+PackMimeHTTP _o187> new flow 12  total active: 13 at 13.850003
+	flow 12 created new TCPAgent _o268
+	flow 12 created new TCPAgent _o269
+	flow 12 created new ClientApp _o272 (0 in pool, 13 active)
+	flow 12 created new ServerApp _o273 (0 in pool, 13 active)
+	next connection scheduled in 0.681604 s...
+client _o272 (12)> sent 496-byte req (84-byte rsp) at 13.850003
+
+PackMimeHTTP _o187> new flow 13  total active: 14 at 14.531607
+	flow 13 created new TCPAgent _o274
+	flow 13 created new TCPAgent _o275
+	flow 13 created new ClientApp _o278 (0 in pool, 14 active)
+	flow 13 created new ServerApp _o279 (0 in pool, 14 active)
+	next connection scheduled in 0.007276 s...
+client _o278 (13)> sent 1164-byte req (11358-byte rsp) at 14.531607
+
+PackMimeHTTP _o187> new flow 14  total active: 15 at 14.538883
+	flow 14 created new TCPAgent _o280
+	flow 14 created new TCPAgent _o281
+	flow 14 created new ClientApp _o284 (0 in pool, 15 active)
+	flow 14 created new ServerApp _o285 (0 in pool, 15 active)
+	next connection scheduled in 0.000583 s...
+client _o284 (14)> sent 531-byte req (441-byte rsp) at 14.538883
+
+PackMimeHTTP _o187> new flow 15  total active: 16 at 14.539466
+	flow 15 created new TCPAgent _o286
+	flow 15 created new TCPAgent _o287
+	flow 15 created new ClientApp _o290 (0 in pool, 16 active)
+	flow 15 created new ServerApp _o291 (0 in pool, 16 active)
+	next connection scheduled in 0.134685 s...
+client _o290 (15)> sent 1221-byte req (615-byte rsp) at 14.539466
+
+PackMimeHTTP _o187> new flow 16  total active: 17 at 14.674152
+	flow 16 created new TCPAgent _o292
+	flow 16 created new TCPAgent _o293
+	flow 16 created new ClientApp _o296 (0 in pool, 17 active)
+	flow 16 created new ServerApp _o297 (0 in pool, 17 active)
+	next connection scheduled in 0.054075 s...
+client _o296 (16)> sent 529-byte req (719-byte rsp) at 14.674152
+
+PackMimeHTTP _o187> new flow 17  total active: 18 at 14.728227
+	flow 17 created new TCPAgent _o298
+	flow 17 created new TCPAgent _o299
+	flow 17 created new ClientApp _o302 (0 in pool, 18 active)
+	flow 17 created new ServerApp _o303 (0 in pool, 18 active)
+	next connection scheduled in 0.040803 s...
+client _o302 (17)> sent 453-byte req (666-byte rsp) at 14.728227
+
+PackMimeHTTP _o187> new flow 18  total active: 19 at 14.769030
+	flow 18 created new TCPAgent _o304
+	flow 18 created new TCPAgent _o305
+	flow 18 created new ClientApp _o308 (0 in pool, 19 active)
+	flow 18 created new ServerApp _o309 (0 in pool, 19 active)
+	next connection scheduled in 0.238597 s...
+client _o308 (18)> sent 628-byte req (13781-byte rsp) at 14.769030
+
+PackMimeHTTP _o187> new flow 19  total active: 20 at 15.007627
+	flow 19 created new TCPAgent _o310
+	flow 19 created new TCPAgent _o311
+	flow 19 created new ClientApp _o314 (0 in pool, 20 active)
+	flow 19 created new ServerApp _o315 (0 in pool, 20 active)
+	next connection scheduled in 3.070598 s...
+client _o314 (19)> sent 1647-byte req (3807-byte rsp) at 15.007627
+
+PackMimeHTTP _o187> new flow 20  total active: 21 at 18.078225
+	flow 20 created new TCPAgent _o316
+	flow 20 created new TCPAgent _o317
+	flow 20 created new ClientApp _o320 (0 in pool, 21 active)
+	flow 20 created new ServerApp _o321 (0 in pool, 21 active)
+	next connection scheduled in 5.409324 s...
+client _o320 (20)> sent 742-byte req (466-byte rsp) at 18.078225
+NS EXITING...
+num_nodes is set 3
+channel.cc:sendUp - Calc highestAntennaZ_ and distCST_
+highestAntennaZ_ = 1.5,  distCST_ = 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.0

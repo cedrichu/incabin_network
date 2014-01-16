@@ -1,0 +1,3 @@
+export LD_LIBRARY_PATH=/home/lek/Downloads/ns-allinone-2.35/otcl-1.14/:/home/lek/Downloads/ns-allinone-2.35/lib
+export PATH=$PATH:/home/lek/Downloads/ns-allinone-2.35/bin:/home/lek/Downloads/ns-allinone-2.35/tcl8.5.10/unix:/home/lek/Downloads/ns-allinone-2.35/tk8.5.10/unix:/home/lek/Downloads/ns-allinone-2.35/nam-1.15
+export TCL_LIBRARY=/home/lek/Downloads/ns-allinone-2.35/tcl8.5.10/library/:/home/lek/Downloads/ns-allinone-2.35/tk8.5.10/library

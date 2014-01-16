@@ -1,0 +1,16 @@
+mkdir ../project
+cp lte.tcl ../project/lte.tcl 
+cp ltequeue.h ../project/ltequeue.h 
+cp ltequeue.cc ../project/ltequeue.cc 
+cp ulairqueue.cc ../project/ulairqueue.cc 
+cp dlairqueue.cc ../project/dlairqueue.cc 
+cp uls1queue.cc ../project/uls1queue.cc 
+cp dls1queue.cc ../project/dls1queue.cc
+cp Readme ../project/Readme
+cp throughput.awk ../project/
+cp delay.awk ../project/
+cp jitter.awk ../project/
+cp test ../project/test 
+cp checkout ../project/checkout
+cp checkin ../project/checkin
+

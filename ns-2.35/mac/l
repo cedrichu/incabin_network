@@ -1,0 +1,74 @@
+134d133
+< 	//MAC_DBG=1;
+177,181c176,178
+<   if (MAC_DBG) {
+<     fprintf(stderr,"L %f %d %s %s\n",Scheduler::instance().clock(),(int)index_,event,additional);
+<   }
+<   //		cout<<"L "<<Scheduler::instance().clock()<<" "<<index_<<" "<<"MAC"<<" "<<event<<" "<<additional
+<   //				<<endl;
+---
+> 	if (MAC_DBG)
+> 		cout<<"L "<<Scheduler::instance().clock()<<" "<<index_<<" "<<"MAC"<<" "<<event<<" "<<additional
+> 				<<endl;
+653,655d649
+< 	  //	  fprintf(stderr,"transmit uid %d\n",hdr_cmn::access(p)->uid_);
+< 	  if((int)hdr_cmn::access(p)->next_hop_ >= 0)
+< 	    fprintf(stderr,"-123456 %f 0 %d -1\n",Scheduler::instance().clock(),hdr_cmn::access(p)->uid_);
+695,696c689
+< 	  if (MAC_DBG) {
+< 	    fprintf(stderr,"recv packet %d\n",(int)hdr_cmn::access(p)->uid_);
+---
+> 		if (MAC_DBG)
+698d690
+< 	  }
+841d832
+< 
+850c841
+< 			  fprintf(stderr,"%.5f %d sends data %d with mod %d\n",Scheduler::instance().clock(),(int)(mac_->index_),(int)hdr_cmn::access(pDATA)->uid_,ch->mod_scheme_);
+---
+> 			  fprintf(stderr,"%.5f %d sends data with mod %d\n",Scheduler::instance().clock(),(int)(mac_->index_),ch->mod_scheme_);
+856c847
+< 			  mac_->log("TXC", "msgFromUp, Backoff started");
+---
+> 				mac_->log("TXC", "msgFromUp, Backoff started");
+926c917
+< 	  fprintf(stderr,"%.5f %d sends data %d with mod %d\n",Scheduler::instance().clock(),(int)(mac_->index_),(int)hdr_cmn::access(pDATA)->uid_,ch->mod_scheme_);
+---
+> 	        fprintf(stderr,"%.5f %d sends data with mod %d\n",Scheduler::instance().clock(),(int)(mac_->index_),ch->mod_scheme_);
+1042c1033
+< 	  fprintf(stderr,"%.5f %d sends data %d with mod %d\n",Scheduler::instance().clock(),(int)(mac_->index_),(int)hdr_cmn::access(pDATA)->uid_,ch->mod_scheme_);
+---
+> 	  fprintf(stderr,"%.5f %d sends data with mod %d\n",Scheduler::instance().clock(),(int)(mac_->index_),ch->mod_scheme_);
+1072d1062
+< 		  fprintf(stderr,"ack timeout limit reached %d\n",*counter);
+1078,1081c1068,1070
+< 			if (!ch->xmit_failure_) {
+< 			  ch->xmit_reason_ = XMIT_REASON_RTS;
+< 			  ch->xmit_failure_(pDATA->copy(), ch->xmit_failure_data_);
+< 			  fprintf(stderr,"ch xmit failure, higher lyer support\n");
+---
+> 			if (ch->xmit_failure_) {
+> 				ch->xmit_reason_ = XMIT_REASON_RTS;
+> 			    ch->xmit_failure_(pDATA->copy(), ch->xmit_failure_data_);
+1083c1072
+< 			
+---
+> 
+1115c1104
+< 	
+---
+> 
+1210,1211d1198
+< 			mac_->setSINR(p->txinfo_.RxPr,mac_->noise_floor_);
+< 			fprintf(stderr,"123456 %f %d 1.12 %f\n",Scheduler::instance().clock(),(int)(mac_->index_),mac_->getSINR());
+1230,1231d1216
+< 			mac_->setSINR(p->txinfo_.RxPr,mac_->noise_floor_);
+< 			fprintf(stderr,"123456 %f %d 1.12 %f\n",Scheduler::instance().clock(),(int)(mac_->index_),mac_->getSINR());
+1236,1237d1220
+< 			mac_->setSINR(p->txinfo_.RxPr,mac_->noise_floor_);
+< 			fprintf(stderr,"123456 %f %d 1.12 %f\n",Scheduler::instance().clock(),(int)(mac_->index_),mac_->getSINR());
+1264,1265c1247
+< 			fprintf(stderr,"%f RX DATA with SINR %.2f\n",Scheduler::instance().clock(),mac_->getSINR());
+< 			fprintf(stderr,"123456 %f %d 1.12 %f\n",Scheduler::instance().clock(),(int)(mac_->index_),mac_->getSINR());
+---
+> 			fprintf(stderr,"RX DATA with SINR %.2f\n",mac_->getSINR());

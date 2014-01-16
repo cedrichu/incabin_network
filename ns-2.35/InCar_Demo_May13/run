@@ -1,0 +1,6 @@
+rm output.tr all.ps l
+ns temp.tcl
+awk -f process_trace_full.awk output.tr > l
+gnuplot code_gnuplot_all.gnu
+gs all.ps
+rm l

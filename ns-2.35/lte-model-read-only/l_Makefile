@@ -1,0 +1,114 @@
+41,42c41,42
+< TCLSH	= /root/ns-allinone-2.33/bin/tclsh8.4
+< TCL2C	= ../tclcl-1.19/tcl2c++
+---
+> TCLSH	= /home/lek/Downloads/ns-allinone-2.35/bin/tclsh8.5
+> TCL2C	= ../tclcl-1.20/tcl2c++
+56c56
+< CCOPT	=  -Wall -g 
+---
+> CCOPT	=  -Wall -Wno-write-strings 
+62c62
+< DEFINE	= -DTCP_DELAY_BIND_ALL -DNO_TK -DTCLCL_CLASSINSTVAR  -DNDEBUG -DLINUX_TCP_HEADER -DUSE_SHM -DHAVE_LIBTCLCL -DHAVE_TCLCL_H -DHAVE_LIBOTCL1_13 -DHAVE_OTCL_H -DHAVE_LIBTK8_4 -DHAVE_TK_H -DHAVE_LIBTCL8_4 -DHAVE_TCL_H  -DHAVE_CONFIG_H -DNS_DIFFUSION -DSMAC_NO_SYNC -DCPP_NAMESPACE=std -DUSE_SINGLE_ADDRESS_SPACE -Drng_test
+---
+> DEFINE	= -DTCP_DELAY_BIND_ALL -DNO_TK -DTCLCL_CLASSINSTVAR  -DNDEBUG -DLINUX_TCP_HEADER -DUSE_SHM -DHAVE_LIBTCLCL -DHAVE_TCLCL_H -DHAVE_LIBOTCL1_14 -DHAVE_OTCL_H -DHAVE_LIBTK8_5 -DHAVE_TK_H -DHAVE_LIBTCL8_5 -DHAVE_TCLINT_H -DHAVE_TCL_H  -DHAVE_CONFIG_H -DNS_DIFFUSION -DSMAC_NO_SYNC -DCPP_NAMESPACE=std -DUSE_SINGLE_ADDRESS_SPACE -Drng_test
+67c67
+< 	-I/root/ns-allinone-2.33/tclcl-1.19 -I/root/ns-allinone-2.33/otcl-1.13 -I/root/ns-allinone-2.33/include -I/root/ns-allinone-2.33/include -I/usr/include/pcap \
+---
+> 	-I/home/lek/Downloads/ns-allinone-2.35/tclcl-1.20 -I/home/lek/Downloads/ns-allinone-2.35/otcl-1.14 -I/home/lek/Downloads/ns-allinone-2.35/include -I/home/lek/Downloads/ns-allinone-2.35/include -I/home/lek/Downloads/ns-allinone-2.35/include -I/usr/include/pcap \
+72,74d71
+< 	-I./project \
+< 	-I./tcp/linux \
+< 	-I./tcp/linux/src \
+78c75
+< 	-I./wpan
+---
+> 	-I./wpan -I./arf
+82c79
+< 	-L/root/ns-allinone-2.33/tclcl-1.19 -ltclcl -L/root/ns-allinone-2.33/otcl-1.13 -lotcl -L/root/ns-allinone-2.33/lib -ltk8.4 -L/root/ns-allinone-2.33/lib -ltcl8.4 \
+---
+> 	-L/home/lek/Downloads/ns-allinone-2.35/tclcl-1.20 -ltclcl -L/home/lek/Downloads/ns-allinone-2.35/otcl-1.14 -lotcl -L/home/lek/Downloads/ns-allinone-2.35/lib -ltk8.5 -L/home/lek/Downloads/ns-allinone-2.35/lib -ltcl8.5 \
+154c151,152
+< 	packmime/packmime_ranvar.o
+---
+> 	packmime/packmime_ranvar.o \
+> 	tmix/tmix.o tmix/tmixAgent.o tmix/tmix_delaybox.o
+158c156,158
+< 	tcl/packmime/packmime.tcl
+---
+> 	tcl/packmime/packmime.tcl \
+> 	tcl/tmix/tmix.tcl \
+> 	tcl/tmix/tmix_delaybox.tcl
+165c165
+< 	tools/random.o tools/rng.o tools/ranvar.o common/misc.o common/timer-handler.o \
+---
+> 	tools/random.o tools/rng.o tools/ranvar.o common/misc.o common/timer-handler.o tools/mpeg4_traffic.o \
+199,205c199
+< 	tcp/linux/tcp_naivereno.o\
+< 	tcp/linux/src/tcp_cong.o\
+< 	tcp/linux/src/tcp_highspeed.o tcp/linux/src/tcp_bic.o tcp/linux/src/tcp_htcp.o tcp/linux/src/tcp_scalable.o tcp/linux/src/tcp_cubic.o\
+< 	tcp/linux/src/tcp_westwood.o tcp/linux/src/tcp_vegas.o tcp/linux/src/tcp_hybla.o\
+< 	tcp/linux/src/tcp_illinois.o tcp/linux/src/tcp_yeah.o \
+< 	tcp/linux/src/tcp_veno.o tcp/linux/src/tcp_compound.o tcp/linux/src/tcp_lp.o\
+< 	tcp/scoreboard1.o tcp/tcp-linux.o tcp/linux/ns-linux-util.o tcp/linux/ns-linux-c.o tcp/linux/ns-linux-param.o\
+---
+> 	tcp/scoreboard1.o tcp/tcp-linux.o tcp/linux/ns-linux-util.o \
+215a210,216
+>         dccp/dccp_sb.o \
+>         dccp/dccp_opt.o \
+>         dccp/dccp_ackv.o \
+>         dccp/dccp_packets.o \
+>         dccp/dccp.o \
+>         dccp/dccp_tcplike.o \
+>         dccp/dccp_tfrc.o \
+253a255
+> 	mobile/tworayclean.o  mobile/freespace.o \
+276a279,284
+> 	aomdv/aomdv_logs.o aomdv/aomdv.o \
+> 	aomdv/aomdv_rtable.o aomdv/aomdv_rqueue.o \
+> 	puma/puma.o \
+> 	mdart/mdart_adp.o mdart/mdart_dht.o mdart/mdart_ndp.o \
+> 	mdart/mdart_neighbor.o mdart/mdart_queue.o mdart/mdart_table.o \
+> 	mdart/mdart.o \
+295a304
+> 	arf/arf.o \
+329,333d337
+< 	project/ltequeue.o \
+< 	project/ulairqueue.o \
+< 	project/dlairqueue.o \
+< 	project/uls1queue.o \
+< 	project/dls1queue.o \
+345c349,356
+< OBJ_C =
+---
+> OBJ_C = \
+> 	tcp/linux/tcp_naivereno.o\
+> 	tcp/linux/src/tcp_cong.o\
+> 	tcp/linux/src/tcp_highspeed.o tcp/linux/src/tcp_bic.o tcp/linux/src/tcp_htcp.o tcp/linux/src/tcp_scalable.o tcp/linux/src/tcp_cubic.o\
+> 	tcp/linux/src/tcp_westwood.o tcp/linux/src/tcp_vegas.o tcp/linux/src/tcp_hybla.o\
+> 	tcp/linux/src/tcp_illinois.o tcp/linux/src/tcp_yeah.o \
+> 	tcp/linux/src/tcp_veno.o tcp/linux/src/tcp_compound.o tcp/linux/src/tcp_lp.o\
+> 	tcp/linux/ns-linux-c.o tcp/linux/ns-linux-param.o
+376c387
+< 	$(OBJ_EMULATE_C) common/tclAppInit.o \
+---
+> 	$(OBJ_EMULATE_C) common/tclAppInit.o common/main-monolithic.o \
+379,380c390
+< 	common/ptypes2tcl common/ptypes2tcl.o \
+< 	project/*.o project/out.* project/http.log project/*.txt
+---
+> 	common/ptypes2tcl common/ptypes2tcl.o 
+446a457
+> 
+554c565
+< clean:
+---
+> clean: clean-recursive
+556a568,570
+> clean-recursive:
+> 	for i in $(SUBDIRS); do ( cd $$i; $(MAKE) clean; ) done
+> 
+586c600
+< 	$(MKDEP) $(CFLAGS) $(INCLUDES) -- $(SRC) 2>&1 > /dev/null
+---
+> 	$(MKDEP) $(CFLAGS) $(INCLUDES) $(SRC) 2>&1 > /dev/null

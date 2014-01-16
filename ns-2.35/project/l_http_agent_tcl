@@ -1,0 +1,5 @@
+184,187d183
+< 
+< 	# Qiu Qinlong: simulate interactive traffic, so class_=2
+< 	$tcp set class_ 2
+< 

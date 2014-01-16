@@ -1,0 +1,20 @@
+50,59d49
+< Packet* DropTail::find(int i) 
+< {
+< 	return q_->lookup(i);
+< }
+< 
+< Packet* DropTail::remove(int i)
+< {
+< 	return q_->sdeque(i);
+< }
+< 
+97,104d86
+< 	hdr_ip *iph=HDR_IP(p);
+< 	
+< 	if(iph->flowid()!=0 && iph->flowid()!=1 && iph->flowid()!=2 && iph->flowid()!=3) 
+< 	{
+< 		printf("Invalide class id in DropTail::enque, Packet's class id is %d\n", iph->flowid());
+< 		exit(0);
+< 	}
+< 

@@ -1,0 +1,43 @@
+tar -xvvf backup.tar ./
+echo "tar done!"
+
+echo "checkin the code ..."
+
+# new files
+cp lte.tcl ../project/lte.tcl 
+cp ltequeue.h ../project/ltequeue.h 
+cp ltequeue.cc ../project/ltequeue.cc 
+cp ulairqueue.cc ../project/ulairqueue.cc 
+cp dlairqueue.cc ../project/dlairqueue.cc 
+cp uls1queue.cc ../project/uls1queue.cc 
+cp dls1queue.cc ../project/dls1queue.cc
+cp Readme ../project/Readme
+cp throughput.awk ../project/
+cp delay.awk ../project/
+cp jitter.awk ../project/
+cp test ../project/test 
+cp checkout ../project/checkout
+cp checkin ../project/checkin
+
+# modified .h .cc
+cp packet.h ../common/packet.h 
+cp packet.cc ../common/packet.cc 
+cp drop-tail.h ../queue/drop-tail.h 
+cp drop-tail.cc ../queue/drop-tail.cc 
+cp red.h ../queue/red.h 
+cp red.cc ../queue/red.cc
+cp queue.h ../queue/queue.h 
+
+# modified .tcl
+cp ns-default.tcl ../tcl/lib/ns-default.tcl 
+cp ns-link.tcl ../tcl/lib/ns-link.tcl 
+cp ns-lib.tcl ../tcl/lib/ns-lib.tcl 
+cp session-rtp.tcl ../tcl/rtp/session-rtp.tcl 
+cp http-agent.tcl ../tcl/webcache/http-agent.tcl 
+cp http-cache.tcl ../tcl/webcache/http-cache.tcl 
+cp http-server.tcl ../tcl/webcache/http-server.tcl 
+
+# modified makefile
+cp Makefile ../
+
+echo "done!"

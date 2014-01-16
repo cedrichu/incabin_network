@@ -1,0 +1,50 @@
+35c35
+< # @(#) $Header: /cvsroot/nsnam/ns-2/tcl/lib/ns-lib.tcl,v 1.276 2008/02/18 03:39:02 tom_henderson Exp $
+---
+> # @(#) $Header: /cvsroot/nsnam/ns-2/tcl/lib/ns-lib.tcl,v 1.279 2010/05/09 22:28:41 tom_henderson Exp $
+632a633,641
+> 		    AOMDV {
+> 			    set ragent [$self create-aomdv-agent $node]
+> 		    }
+> 		    MDART {
+> 			    set ragent [$self create-mdart-agent $node]
+> 		    }
+>                     PUMA {
+>                             set ragent [$self create-puma-agent $node]
+>                     }
+852a862,885
+> # AOMDV patch
+> Simulator instproc create-aomdv-agent { node } {
+> 	set ragent [new Agent/AOMDV [$node node-addr]]
+> 	$self at 0.0 "$ragent start"
+> 	$node set ragent_ $ragent
+> 	return $ragent
+> }
+> 
+> Simulator instproc create-puma-agent { node } {
+>         #  Create PUMA routing agent
+>         set ragent [new Agent/PUMA [$node node-addr]]
+>         $self at 0.0 "$ragent start"
+>         $node set ragent_ $ragent
+>         return $ragent
+> }
+> 
+> Simulator instproc create-mdart-agent { node } {
+>         #  Create M-DART routing agent
+> 	set ragent [new Agent/MDART [$node node-addr]]
+>         $self at 0.0 "$ragent start"     ;# start BEACON/HELLO Messages
+>         $node set ragent_ $ragent
+>         return $ragent
+> }
+> 
+1019d1051
+< 	} else {
+1021,1022d1052
+< 		
+< 
+1045,1049d1074
+< 
+< 	# Qiu Qinlong:set the source node and destination node for the created queue
+< 	$q set snode_ $sid 
+< 	$q set dnode_ $did 
+< 	

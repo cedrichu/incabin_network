@@ -1,0 +1,44 @@
+echo "checkout the code ..."
+
+# new files
+cp ../project/lte.tcl .
+cp ../project/ltequeue.h .
+cp ../project/ltequeue.cc .
+cp ../project/ulairqueue.cc .
+cp ../project/dlairqueue.cc .
+cp ../project/uls1queue.cc .
+cp ../project/dls1queue.cc .
+cp ../project/Readme .
+cp ../project/throughput.awk .
+cp ../project/delay.awk .
+cp ../project/jitter.awk .
+cp ../project/test .
+cp ../project/checkout .
+cp ../project/checkin .
+
+# modified .h .cc
+cp ../common/packet.h .
+cp ../common/packet.cc .
+cp ../queue/drop-tail.h .
+cp ../queue/drop-tail.cc .
+cp ../queue/red.h .
+cp ../queue/red.cc .
+cp ../queue/queue.h .
+
+# modified .tcl
+cp ../tcl/lib/ns-default.tcl .
+cp ../tcl/lib/ns-link.tcl .
+cp ../tcl/lib/ns-lib.tcl .
+cp ../tcl/rtp/session-rtp.tcl .
+cp ../tcl/webcache/http-agent.tcl .
+cp ../tcl/webcache/http-cache.tcl .
+cp ../tcl/webcache/http-server.tcl .
+
+# modified makefile
+cp ../Makefile .
+
+echo "done!"
+
+tar -cvvf backup.tar ./
+echo "tar done!"
+

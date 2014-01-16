@@ -1,0 +1,8 @@
+bandwidth 3.2Mb 140ms DropTail
+#LTEQueue/ULAirQueue
+#DropTail CoDel
+5.0 0.3Mb 140ms
+10.0 0.15Mb 140ms
+20.0 0.2Mb 140ms
+30.0 0.04Mb 200ms
+40.0 0.2Mb 100ms

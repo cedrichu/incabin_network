@@ -1,0 +1,5 @@
+216,219d215
+< 
+< 	# Qiu Qinlong: simulate interactive traffic, so class_=2
+< 	$snk set class_ 2
+< 

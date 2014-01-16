@@ -1,0 +1,143 @@
+
+#include "arf.h"
+#include <stdio.h>
+
+Arf::Arf()
+{
+  currentRate = 0;
+  consecutiveSuccess = 0;
+  consecutiveFailures = 0;
+  probationNumber = 0;
+
+  //distance = 10:2:398
+  double modelRate[] = {24,24,24,24,24,24,24,24,24,24,
+	       24,24,24,24,24,24,24,24,24,24,
+	       24,24,24,24,24,24,24,24,24,24,
+	       24,24,24,24,18,18,18,18,18,18,
+	       18,18,18,18,18,18,18,18,18,18,
+	       18,18,18,18,18,18,18,18,18,18,
+	       18,18,18,18,18,18,18,18,18,18,
+	       18,18,18,18,18,18,18,18,18,18,
+	       18,18,18,18,18,18,18,18,18,18,
+	       18,18,18,18,18,18,18,18,18,18,
+	       18,18,18,18,18,18,18,18,18,18,
+	       18,18,18,18,12,18,12,12,12,12,
+	       12,12,12,12,12,12,12,9,12,12,
+	       9,9,9,9,9,9,9,9,9,9,
+	       9,9,9,9,9,9,9,9,9,9,
+	       9,9,9,9,6,9,9,9,9,6,
+	       6,6,6,6,6,6,6,6,6,6,
+	       6,6,6,6,4.5,6,6,6,4.5,4.5,
+	       4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,
+	       4.5,3,4.5,3,4.5};
+	       
+  double FSRate []= {24,24,24,24,24,24,24,24,24,24,
+	    24,24,24,24,24,24,24,24,24,24,
+	    24,24,24,24,24,24,24,24,24,24,
+	    24,24,24,24,24,24,24,24,24,24,
+	    18,18,18,18,18,18,18,18,18,18,
+	    18,18,18,18,18,18,18,18,18,18,
+	    18,18,18,18,18,18,18,18,18,18,
+	    18,18,18,18,18,18,12,12,12,12,
+	    12,12,12,12,12,12,12,12,12,12,
+	    12,12,12,9,12,12,9,9,12,12,
+	    9,9,9,9,9,9,9,9,9,9,
+	    9,9,9,9,9,9,9,9,9,9,
+	    9,9,9,9,9,9,9,9,9,9,
+	    9,9,9,9,6,9,6,9,6,6,
+	    6,6,6,6,6,6,6,6,6,6,
+	    6,6,6,6,6,6,6,6,6,6,
+	    6,6,6,6,6,6,6,6,6,6,
+	    6,6,4.5,4.5,6,4.5,4.5,4.5,4.5,4.5,
+	    4.5,4.5,4.5,4.5,4.5,4.5,6,4.5,4.5,4.5,
+	       4.5,3,4.5,4.5,4.5};
+  
+
+}
+
+void
+Arf::successfulTransmission ()
+{
+  // if still in probation
+  if (probationNumber > 0){
+    // Correctly tx, so leave probation
+    probationNumber = 0;
+  }
+  else {
+    consecutiveSuccess++;
+    consecutiveFailures = 0;
+    
+    if (consecutiveSuccess >= STEPUP_THRESHOLD){
+      // don't increase beyond the Max
+      if (currentRate < 3)
+	currentRate++;
+      // reset counters
+      consecutiveSuccess = 0;
+      consecutiveFailures = 0;
+      // enter probation
+      probationNumber = PROBATION_SIZE;
+    }
+    fprintf(stderr,"successful transmission: currentRate %d\n",currentRate);
+  }
+}
+
+void
+Arf::failedTransmission ()
+{
+  // Check for failed last chance in probation
+  if (probationNumber == 1){
+    currentRate--;
+    consecutiveSuccess = 0;
+    consecutiveFailures = 0;
+    probationNumber = 0;    
+  }
+  else if (probationNumber > 1){
+    // failed a chance to get out of probation
+    probationNumber--;
+  }
+  else{
+    consecutiveSuccess = 0;
+    consecutiveFailures++;
+    // Too many failures, fallback
+    if ((consecutiveFailures >= FALLBACK_THRESHOLD) && (currentRate > 0)){
+      currentRate--;
+      consecutiveSuccess = 0;
+      consecutiveFailures = 0;
+      probationNumber = 0;
+    }
+  }
+  fprintf(stderr,"failed transmission: currentRate %d\n",currentRate);
+}
+
+
+double
+Arf::getTransmissionRate ()
+{
+  double rate;
+  switch (currentRate){
+  case 0:
+    rate = 1000000.0;
+    break;
+  case 1:
+    rate = 2000000.0;
+    break;
+  case 2:
+    rate = 5500000.0;
+    break;
+  case 3:
+    rate = 11000000.0;
+    break;
+  default:
+    printf("Unknown rate %d\n", currentRate);
+    rate = 0;
+  }
+
+  return rate;
+}
+
+int
+Arf::getModScheme ()
+{
+  //return 0;
+    return currentRate;
+}

@@ -1,0 +1,13 @@
+54,57d53
+< 	
+< 	# Qiu Qinlong: simulate conversational traffic, so class_=0
+< 	$cchan_ set class_ 0
+< 	$dchan_ set class_ 0
+136c132
+< 	$dchan_ set dst_addr_ $g
+---
+> 	$dchan_ set dst_ $g
+141c137
+< 	$cchan_ set dst_addr_ $g
+---
+> 	$cchan_ set dst_ $g

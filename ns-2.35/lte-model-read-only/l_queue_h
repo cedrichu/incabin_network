@@ -1,0 +1,20 @@
+82,100d81
+< 
+< 	//Qiu Qinlong: deque a specific packet
+< 	Packet* sdeque(int i) {
+< 		Packet* p=lookup(i);
+< 		
+< 		if(NULL==p) return NULL;
+< 		
+< 		if(p==head_){
+< 			return deque();
+< 		}
+< 	
+< 		Packet* pp=lookup(i-1);
+< 		pp->next_ = p->next_;
+< 		--len_;
+< 		bytes_ -= hdr_cmn::access(p)->size();
+< 		if(p==tail_){tail_=pp;}
+< 		return p;
+< 	}
+< 

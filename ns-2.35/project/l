@@ -1,0 +1,33 @@
+delay.awk:# calculate each class delay
+dlairqueue.cc:static class DLAirQueueClass : public TclClass {
+dlairqueue.h:class DLAirQueue;
+dlairqueue.h:class DLAirTimer : public TimerHandler {
+dlairqueue.h:class DLAirQueue : public LTEQueue {
+dlqueue.h:class DLQueue;
+dlqueue.h:class DLTimer : public TimerHandler {
+dlqueue.h:class DLQueue : public LTEQueue {
+dls1queue.cc:static class DLS1QueueClass : public TclClass {
+dls1queue.cc:	//flow control only valid to classo 2 & class 3
+dls1queue.cc:			//flow control only apply to class 2 and class 3
+dls1queue.h:class DLS1Queue : public LTEQueue {
+jitter.awk:#calculate each class jitter
+l:delay.awk:# calculate each class delay
+l:dlairqueue.cc:static class DLAirQueueClass : public TclClass {
+l:dlairqueue.h:class DLAirQueue;
+l:dlairqueue.h:class DLAirTimer : public TimerHandler {
+l:dlairqueue.h:class DLAirQueue : public LTEQueue {
+ltequeue.cc:static class LTEQueueClass : public TclClass {
+ltequeue.cc~:static class LTEQueueClass : public TclClass {
+ltequeue.h:class LTEQueue : public Queue {
+lte.tcl:#    class id	class type	simulation application	
+Readme:friend class B;
+Readme:a->a; //class B can use class A's protected member due to B is A's friend class.
+Readme:p->print();//class A's print
+Readme:q->print();//class B's print
+throughput.awk:# calculate each class throughput
+ulairqueue.cc:static class ULAirQueueClass : public TclClass {
+ulairqueue.cc:			printf("invalid class id %d\n", classid);
+ulairqueue.h:class ULAirQueue : public LTEQueue {
+uls1queue.cc:static class ULS1QueueClass : public TclClass {
+uls1queue.cc:			printf("invalid class id %d\n", classid);
+uls1queue.h:class ULS1Queue : public LTEQueue {

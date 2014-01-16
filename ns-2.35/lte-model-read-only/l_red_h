@@ -1,0 +1,15 @@
+56c56
+<  * @(#) $Header: /cvsroot/nsnam/ns-2/queue/red.h,v 1.45 2007/07/03 02:11:34 sallyfloyd Exp $ (LBL)
+---
+>  * @(#) $Header: /cvsroot/nsnam/ns-2/queue/red.h,v 1.46 2010/03/08 05:54:53 tom_henderson Exp $ (LBL)
+146,151d145
+< 	void enqueue(Packet* p) {enque(p);}
+< 	Packet* dequeue() {return deque();}
+< 	int length() { return q_->length();}
+< 	int meanPacketSize(){return edp_.mean_pktsize;}
+< 	Packet* remove(int i) {return q_->sdeque(i);}
+< 	Packet* find(int i) {return q_->lookup(i);}
+172c166
+<         virtual void reportDrop(Packet *pkt) {}  //pushback
+---
+>         virtual void reportDrop(Packet *pkt); //pushback

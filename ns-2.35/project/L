@@ -1,0 +1,22 @@
+dlairqueue.cc:} class_dlairqueue;
+Binary file dlairqueue.o matches
+dls1queue.cc:} class_dls1queue;
+Binary file dls1queue.o matches
+l_http_agent_tcl:< 	# Qiu Qinlong: simulate interactive traffic, so class_=2
+l_http_agent_tcl:< 	$tcp set class_ 2
+l_http_cache_tcl:< 	# Qiu Qinlong: simulate interactive traffic, so class_=2
+l_http_cache_tcl:< 	$snk set class_ 2
+l_http_server_tcl:< 	# Qiu Qinlong: simulate interactive traffic, so class_=2
+l_http_server_tcl:< 	$snk set class_ 2
+l_session_rtp_tcl:< 	# Qiu Qinlong: simulate conversational traffic, so class_=0
+l_session_rtp_tcl:< 	$cchan_ set class_ 0
+l_session_rtp_tcl:< 	$dchan_ set class_ 0
+ltequeue.cc:} class_ltequeue;
+ltequeue.cc~:} class_ltequeue;
+Binary file ltequeue.o matches
+lte.tcl:	$udp($i) set class_ 1
+lte.tcl:	$tcp($i) set class_ 3
+ulairqueue.cc:} class_ulqirqueue;
+Binary file ulairqueue.o matches
+uls1queue.cc:} class_uls1queue;
+Binary file uls1queue.o matches

@@ -1,0 +1,24 @@
+60c60
+<      "@(#) $Header: /cvsroot/nsnam/ns-2/queue/red.cc,v 1.88 2007/10/23 06:55:54 seashadow Exp $ (LBL)";
+---
+>      "@(#) $Header: /cvsroot/nsnam/ns-2/queue/red.cc,v 1.90 2011/10/02 22:32:34 tom_henderson Exp $ (LBL)";
+388c388
+< 	double new_ave, old_ave;
+---
+> 	double new_ave;
+394d393
+< 	old_ave = new_ave;
+954c953
+< 	double f, f_sl, f_old;
+---
+> 	double f, f_sl;
+961d959
+< 		f_old = f;
+963a962,963
+> #ifdef RED_HOLT_WINTERS
+> 	double f_old;
+964a965
+> #endif
+986a988,989
+> void REDQueue::reportDrop(Packet *)
+> {}

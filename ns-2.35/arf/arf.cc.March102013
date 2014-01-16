@@ -1,0 +1,129 @@
+
+#include "arf.h"
+#include <stdio.h>
+#include "wireless-phyExt.h"
+
+Arf::Arf(int Rate, int b)
+{
+  currentRate = 0;
+  consecutiveSuccess = 0;
+  consecutiveFailures = 0;
+  probationNumber = 0;
+  mode = Rate;
+  fixedRate = b;
+  //  fprintf(stderr,"mode = %d, fixedRate %d\n",mode,fixedRate);
+}
+
+void
+Arf::successfulTransmission ()
+{
+  // if still in probation
+  if (probationNumber > 0){
+    // Correctly tx, so leave probation
+    probationNumber = 0;
+  }
+  else {
+    consecutiveSuccess++;
+    consecutiveFailures = 0;
+    
+    if (consecutiveSuccess >= STEPUP_THRESHOLD){
+      // don't increase beyond the Max
+      if (currentRate < 3)
+	currentRate++;
+      // reset counters
+      consecutiveSuccess = 0;
+      consecutiveFailures = 0;
+      // enter probation
+      probationNumber = PROBATION_SIZE;
+    }
+    if(mode == 1)
+      fprintf(stderr,"successful transmission: currentRate %d\n",currentRate);
+  }
+}
+
+void
+Arf::failedTransmission ()
+{
+  // Check for failed last chance in probation
+  if (probationNumber == 1){
+    currentRate--;
+    consecutiveSuccess = 0;
+    consecutiveFailures = 0;
+    probationNumber = 0;    
+  }
+  else if (probationNumber > 1){
+    // failed a chance to get out of probation
+    probationNumber--;
+  }
+  else{
+    consecutiveSuccess = 0;
+    consecutiveFailures++;
+    // Too many failures, fallback
+    if ((consecutiveFailures >= FALLBACK_THRESHOLD) && (currentRate > 0)){
+      currentRate--;
+      consecutiveSuccess = 0;
+      consecutiveFailures = 0;
+      probationNumber = 0;
+    }
+  }
+  if(mode == 1)
+    fprintf(stderr,"failed transmission: currentRate %d\n",currentRate);
+}
+
+
+double
+Arf::getTransmissionRate ()
+{
+  double rate;
+  switch (currentRate){
+  case 0:
+    rate = 1000000.0;
+    break;
+  case 1:
+    rate = 2000000.0;
+    break;
+  case 2:
+    rate = 5500000.0;
+    break;
+  case 3:
+    rate = 11000000.0;
+    break;
+  default:
+    printf("Unknown rate %d\n", currentRate);
+    rate = 0;
+  }
+
+  return rate;
+}
+
+int
+Arf::getModScheme (double SINR)
+{
+
+  //SINR ratio
+  //return 0;
+  int length = sizeof(modulation_table)/sizeof(ModulationParam);
+  //  fprintf(stderr,"%f SINR %f %f %d\n",Scheduler::instance().clock(),SINR,modulation_table[7].SINR_ratio,length);
+  if(mode == 0) {
+    //default, always use basic
+    if(fixedRate > length) {
+      fprintf(stderr,"Unsupported rate %d\n",fixedRate);
+      exit(0);
+    }
+    return fixedRate;
+  }
+  else if(mode == 1) {
+    //ARF
+    return currentRate; 
+  } else if(mode == 2) {
+    for(int i=length-1; i > 0; i--) {
+      if(SINR > modulation_table[i].SINR_ratio) {
+	//	fprintf(stderr,"%f use rate SINR %.2f %d\n",Scheduler::instance().clock(),modulation_table[i].SINR_ratio,i);
+	return i;
+      }
+    }
+    fprintf(stderr,"%f use basic rate SINR %.2f\n",Scheduler::instance().clock(),SINR);
+    return 0;
+  } 
+  return 0;
+}

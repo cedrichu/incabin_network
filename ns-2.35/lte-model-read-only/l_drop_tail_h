@@ -1,0 +1,8 @@
+61,67d60
+< 	void enqueue(Packet* p){enque(p);}
+< 	Packet* dequeue() {return deque();}
+< 	int length(){return q_->length();} 
+< 	int meanPacketSize(){return mean_pktsize_;}
+< 	void setqlim(int i) {qlim_=i;}
+< 	Packet* find(int i);
+< 	Packet* remove(int i);

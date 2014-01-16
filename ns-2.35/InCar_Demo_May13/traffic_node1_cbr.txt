@@ -1,0 +1,6 @@
+#HTTP num_connection/sec start end
+#HTTP 5 10.0 20.0
+#FTP filesize(Byte, -1 for infinite stream) start end
+#FTP 10000000 10.0 20.0
+#Streaming rate(Mb) packetsize(byte) start end
+Streaming 0.64Mb 100 5.0 20.0
